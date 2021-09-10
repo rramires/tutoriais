@@ -1,0 +1,171 @@
+1 - Crie e acesse uma nova pasta para o projeto
+mkdir sequelize
+cd sequelize
+
+
+2 - Inicialize um projeto node
+npm init -y
+
+
+3 - Instale o sequelize (segundo parametro é o banco)
+npm install sequelize mysql2
+
+
+4 - Abra no VSCode
+code . 
+
+
+5 - Crie um arquivo db.js
+const Sequelize = require('sequelize');
+
+/**
+ * Nome do banco
+ * Usuario
+ * Senha
+ * Banco
+ * > options
+ *  Dialect 'mysql'
+ *  Host 'localhost'
+ *  Port 3306 - Opcional
+ */
+const sequelize = new Sequelize('crud_sequelize',
+                                'root',
+                                '&ra2001!',
+                                {
+                                    dialect: 'mysql',
+                                    host: 'localhost'
+                                });
+
+module.exports = sequelize;
+
+
+6 - Crie o modelo de dados (que vai ser/gerar a nossa tabela) produto.js
+
+const Sequelize = require('sequelize');
+const database = require('./db');
+const Sequelize = require('sequelize');
+const database = require('./db');
+
+/*
+ Nome do modelo de dados/tabela 
+ (no singular, ele pluraliza o nome, ex: cidade, fica cidades)
+ {column : {
+     param: value
+ }}
+*/
+const Produto = database.define('produto', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    nome: {
+        type: Sequelize.STRING(150),
+        allowNull: false
+    },
+    preco: Sequelize.DECIMAL(10,2),
+    descricao: Sequelize.STRING
+});
+
+module.exports = Produto;
+
+
+7 - Crie o arquivo index.js que será nossa aplicação
+
+(
+    async () => {
+        /**
+         * Instancia a conexao
+         */
+        const database = require('./db');
+
+        /**
+         * Instancia os modelos
+        */
+        const Produto = require('./produto');
+
+        /**
+         * cria as tabelas/sincroniza
+         */
+        await database.sync();
+    }
+)();
+
+
+8 - crie um banco no console do mysql
+mysql -u root -p
+create database crud_sequelize;
+exit
+
+
+9 - No console, rode
+node index
+
+Verifique no workbench que criou o banco e a tabela
+
+
+10 - Agora acrescente o código do Create e teste
+
+*** Depois de await database.sync();
+
+/**
+ * Create
+ */
+const novoProduto = await Produto.create({
+	nome: 'Kit Teclado e Mouse Logi',
+	preco: 159.68,
+	descricao: 'Kit com boa relação custo/qualidade'
+});
+// Imprimindo o resultado da criacao no console
+console.log(novoProduto);
+
+
+11 - Depois acrescente o código do Select e teste
+
+/**
+ * Selects
+ * 
+ * Produto.findAll(); // todos os registros
+ * Produto.findByPk(NNN); // filtra por id
+ */
+ const arr_produtos = await Produto.findAll({
+	/* where: {
+		 id: 2
+	 }*/
+ }); // todos
+//
+console.log(arr_produtos);
+
+
+12 - Depois acrescente o código do Update e teste
+
+/**
+ * Update
+ */
+ const produto = await Produto.findByPk(1); // filtra por id
+ // atualiza os campos
+ produto.preco = 200;
+ produto.descricao = 'Alterei a descrição e o preço para 200';
+ // Salve! não esqueça do await, para retornar o registro atualizado
+ await produto.save();
+ //
+ console.log(produto);
+ 
+13 - E por último acrescente o código do Delete e teste
+
+/**
+ * Delete
+ * usa a busca const produto = await Produto.findByPk(1);
+ * depois usa o destroy
+ */
+ // await produto.destroy(); << Descomente para testar
+//
+console.log(produto);
+
+*** Verifique na tabela do banco
+
+É isso!!!
+
+:)
+
