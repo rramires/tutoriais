@@ -2,31 +2,38 @@
 // o parametro "react_app" é a pasta do projeto
 npx create-react-app react_app
 
+
 2 - Comite a instalação
 git add .
 git commit -m 'Instalação do React'
 git push -u origin master
+
 
 3 - Entre e inicialize
 cd react_app
 yarn start
 // Vai abrir uma janela do navegador com sua app
 
+
 4 -  Abra o VSCode
 code .
+
 
 5 - Procure em src, App.js
 // acrescente após o header e salve
 <p>Hello React !</p>
 // Perceba que ao salvar a app rodando no browser atualiza automaticamente
 
+
 6 - Perceba que App é uma function, e que o return dela 
 // é o html que será renderizado no navegador
+
 
 7 - Adicione antes da function App outra function
 function handleButtonClick(){
   alert('Clicou!!!');
 }
+
 
 8 - Apague tudo dentro do header, menos o "Hello React!"
 // e adicione um botão
@@ -36,6 +43,44 @@ function handleButtonClick(){
 </header>
 
 // Teste e veja a janela de alerta
+
+
+9 - O interessante do React é criar componentes reaproveitaveis
+// Vamos criar um para o cabeçalho
+// Crie um arquivo Header.js e adicione
+
+// Sempre importa o React
+import React from "react";
+
+// cria uma função com o mesmo nome do arquivo.js
+function Header(){
+    return(
+        // Digite aqui o HTML
+        <header>
+            <h1>Hello React!!!</h1>
+        </header>
+    )
+}
+// exporta o component
+export default Header;
+
+// 10 - Vamos agora utilizar na App.js
+// no inicio importe
+import Header from './Header';
+
+// Apague o header do html, deixando só o botão 
+// e adicione seu novo component <Header/>
+// fica assim
+
+function App() { 
+  return (
+    <div className="App">
+      <Header/>
+      <input type="button" value="Clique Me!" onClick={handleButtonClick}/>
+    </div>
+  );
+}
+
 
 
 

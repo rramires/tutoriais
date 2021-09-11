@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+// import
+import Header from './Header';
 
 function handleButtonClick(){
   alert('Clicou!!!');
@@ -8,10 +10,8 @@ function handleButtonClick(){
 function App() { 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Hello React !</p>
-        <input type="button" value="Clique Me!" onClick={handleButtonClick}/>
-      </header>
+      <Header/>
+      <input type="button" value="Clique Me!" onClick={handleButtonClick}/>
     </div>
   );
 }
