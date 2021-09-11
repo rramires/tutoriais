@@ -2,11 +2,11 @@
 import React from "react";
 
 // cria uma função com o mesmo nome do arquivo.js
-function Header(){
+function Header(props){
     return(
         // Digite aqui o HTML
         <header>
-            <h1>Hello React!!!</h1>
+            <h1>{props.title}</h1>
         </header>
     )
 }

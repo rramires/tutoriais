@@ -82,6 +82,31 @@ function App() {
 }
 
 
+11 - Recebendo parametros
+// adicione uma propriedade na função Header
+Header(props)
+// props é um objeto com todas as propriedades do component
+// props é um objeto com todas as propriedades do component
+
+// onde está "Hello React!!!" substitua por
+<h1>{props.title}</h1>
+// Fica assim
+
+function Header(props){
+    return(
+        // Digite aqui o HTML
+        <header>
+            <h1>{props.title}</h1>
+        </header>
+    )
+}
+
+// Em App.js, adicione o parametro title no Header
+<Header title="Hello Componet Header !!!"/>
+
+// observe que title, é uma propriedade adicionada a props
+
+
 
 
 
