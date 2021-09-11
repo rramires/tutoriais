@@ -1,0 +1,16 @@
+1 - Crie um novo projeto com o react (vamos usar o asssitente)
+// o parametro "react_app" é a pasta do projeto
+npx create-react-app react_app
+
+2 - Comite a instalação
+git add .
+git commit -m 'Instalação do React'
+git push -u origem master
+
+3 - Entre, inicialize e abra o VSCode
+cd react_app
+yarn start
+code .
+
+
+
