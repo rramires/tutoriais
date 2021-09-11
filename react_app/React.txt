@@ -20,5 +20,28 @@ code .
 <p>Hello React !</p>
 // Perceba que ao salvar a app rodando no browser atualiza automaticamente
 
+6 - Perceba que App é uma function, e que o return dela 
+// é o html que será renderizado no navegador
+
+7 - Adicione antes da function App outra function
+function handleButtonClick(){
+  alert('Clicou!!!');
+}
+
+8 - Apague tudo dentro do header, menos o "Hello React!"
+// e adicione um botão
+<header className="App-header">
+	<p>Hello React !</p>
+	<input type="button" value="Clique Me!" onClick={handleButtonClick}/>
+</header>
+
+// Teste e veja a janela de alerta
+
+
+
+
+
+
+
 
 
