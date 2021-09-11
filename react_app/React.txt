@@ -5,12 +5,20 @@ npx create-react-app react_app
 2 - Comite a instalação
 git add .
 git commit -m 'Instalação do React'
-git push -u origem master
+git push -u origin master
 
-3 - Entre, inicialize e abra o VSCode
+3 - Entre e inicialize
 cd react_app
 yarn start
+// Vai abrir uma janela do navegador com sua app
+
+4 -  Abra o VSCode
 code .
+
+5 - Procure em src, App.js
+// acrescente após o header e salve
+<p>Hello React !</p>
+// Perceba que ao salvar a app rodando no browser atualiza automaticamente
 
 
 
