@@ -104,8 +104,54 @@ function Header(props){
 // Em App.js, adicione o parametro title no Header
 <Header title="Hello Componet Header !!!"/>
 
-// observe que title, é uma propriedade adicionada a props
+// observe que title, é uma propriedade adicionada a props na instância do Header
 
+
+12 - Vamos fazer um pequeno contador para mostrar a atualização dinâmica de valores
+// adicione uma variavel antes do handleButtonClick
+let cont = 0;
+
+// no handleButtonClick, tire o Alert e incremente a variavel cont
+function handleButtonClick(){
+  cont ++;
+}
+
+// no title do Header vamos utilizar
+<Header title={cont}/>
+
+// teste clicando e perceba que NÃO FUNCIONOU!!!
+
+13 - Para que funcione é preciso criar um State
+// para isso importe no inicio
+import { useState } from 'react';
+
+// mude a variavel let, e o handleButtonClick para dentro de App
+
+function App() { 
+
+  let cont = 0;
+  function handleButtonClick(){
+    cont ++;
+  }
+
+  return...
+  
+// troque a variavel cont por uma "reflect" chamada contador
+// const[nomeDaVariavel, funcao] = useState(valorInicial)
+const [contador, setContador] = useState(0);
+
+// dentro do handle use a funcao setContador para fazer o incremento na chamada dela
+function handleButtonClick(){
+	setContador(contador +1); // ++ não funciona
+}
+
+// por último vamos deixar melhorzinho o texto
+<Header title={'O Valor é: ' + contador}/>
+
+// perceba que agora quando clica no botão ele executa o incremento
+// no "local certo"/state e atualiza dinamicamente o valor na página
+
+// os estados são a base do react... foi só um gostinho mesmo!
 
 
 
